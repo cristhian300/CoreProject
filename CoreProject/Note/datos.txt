@@ -1,0 +1,24 @@
+﻿
+select @@SERVERNAME
+
+create dataBase Core
+go
+use Core
+go
+Create table Category(
+CategoryId int identity(1,1) not null,
+Name Varchar(200),
+Description varchar(200)
+)
+
+alter table Category add constraint pk_category primary key (CategoryId)
+
+
+
+
+-------------------------------------------------------------------------
+entity framework core power tools
+
+https://marketplace.visualstudio.com/items?itemName=ErikEJ.EFCorePowerTools
+
+---------------------------------------------------------------------------
