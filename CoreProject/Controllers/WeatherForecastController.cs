@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Core.Data.Context;
+using Core.Data.Entities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
@@ -11,6 +13,12 @@ namespace CoreProject.Controllers
     [Route("[controller]")]
     public class WeatherForecastController : ControllerBase
     {
+        private CoreContext _CoreContext;
+        //public WeatherForecastController(CoreContext CoreContext)
+        //{
+        //    _CoreContext = CoreContext;
+        //}
+
         private static readonly string[] Summaries = new[]
         {
             "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
@@ -18,9 +26,10 @@ namespace CoreProject.Controllers
 
         private readonly ILogger<WeatherForecastController> _logger;
 
-        public WeatherForecastController(ILogger<WeatherForecastController> logger)
+        public WeatherForecastController(ILogger<WeatherForecastController> logger, CoreContext CoreContext)
         {
             _logger = logger;
+            _CoreContext = CoreContext;
         }
 
         [HttpGet]
@@ -35,5 +44,13 @@ namespace CoreProject.Controllers
             })
             .ToArray();
         }
+
+        [HttpPost]
+        public IEnumerable<Category> Post()
+        {
+            var a = _CoreContext.Categories.ToList();
+            return a;
+        }
+
     }
 }

@@ -22,3 +22,6 @@ entity framework core power tools
 https://marketplace.visualstudio.com/items?itemName=ErikEJ.EFCorePowerTools
 
 ---------------------------------------------------------------------------
+conexion 
+services.AddDbContext<CoreContext>(option => option.UseSqlServer(Configuration["ConnectionStrings:SpartacusContext"])
+--------------------------------------------------------------------------------------------------------
