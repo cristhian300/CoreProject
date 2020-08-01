@@ -3,7 +3,7 @@ using Core.Data.Entities;
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Core.Data.Entities;
+
 
 namespace Core.Data.Context
 {
