@@ -7,7 +7,7 @@ using System.Linq;
 
 namespace Core.Data.Datos.Category
 {
-   public class CategoryComand
+   public class CategoryComand : ICategory
     {
 
         private CoreContext _CoreContext;

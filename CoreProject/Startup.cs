@@ -29,6 +29,7 @@ namespace CoreProject
                 configuration.RootPath = "ClientApp/dist";
             });
 
+            
             services.AddDbContext<CoreContext>(option => option.UseSqlServer(Configuration["ConnectionStrings:SpartacusContext"])
             );
         }

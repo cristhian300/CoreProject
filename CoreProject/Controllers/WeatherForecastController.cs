@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using contracts.WeatherForecast.Services;
 using Core.Data.Context;
 using Core.Data.Entities;
 using Microsoft.AspNetCore.Mvc;
@@ -14,10 +15,11 @@ namespace CoreProject.Controllers
     public class WeatherForecastController : ControllerBase
     {
         private CoreContext _CoreContext;
-        //public WeatherForecastController(CoreContext CoreContext)
-        //{
-        //    _CoreContext = CoreContext;
-        //}
+        private IWeatherForecastAplicationServices _IWeatherForecastAplicationServices;
+        public WeatherForecastController(IWeatherForecastAplicationServices IWeatherForecastAplicationServices)
+        {
+            _IWeatherForecastAplicationServices = IWeatherForecastAplicationServices;
+        }
 
         private static readonly string[] Summaries = new[]
         {
@@ -46,9 +48,11 @@ namespace CoreProject.Controllers
         }
 
         [HttpPost]
-        public IEnumerable<Category> Post()
+        public async Task<IQueryable>  Post(int idCategory)
         {
-            var a = _CoreContext.Categories.ToList();
+
+            IQueryable a = await  _IWeatherForecastAplicationServices.ListCategory(idCategory);
+
             return a;
         }
 

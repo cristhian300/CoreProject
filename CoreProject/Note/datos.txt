@@ -25,3 +25,13 @@ https://marketplace.visualstudio.com/items?itemName=ErikEJ.EFCorePowerTools
 conexion 
 services.AddDbContext<CoreContext>(option => option.UseSqlServer(Configuration["ConnectionStrings:SpartacusContext"])
 --------------------------------------------------------------------------------------------------------
+
+---AWS---------------------------------------------------------------
+dotnet --version 
+
+**install entity framework core cli
+dotnet tool install --global dotnet-ef
+
+install extension AWS Toolkit for visual Studio
+
+--------------------------------------------------------------
