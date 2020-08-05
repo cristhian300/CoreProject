@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using transport.WeatherForecast.Response;
 
 namespace applications.WeatherForecast.Services
 {
@@ -17,7 +18,7 @@ namespace applications.WeatherForecast.Services
         {
             _IWeatherForecastDataServices = IWeatherForecastDataServices;
         }
-        public Task<IQueryable> ListCategory(int idCategory)
+        public Task<ListadoCategoriaResponse> ListCategory(int? idCategory)
         {
             return _IWeatherForecastDataServices.ListCategory(idCategory);
         }

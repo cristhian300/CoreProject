@@ -7,6 +7,8 @@ using Core.Data.Context;
 using Core.Data.Entities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using transport.WeatherForecast.Request;
+using transport.WeatherForecast.Response;
 
 namespace CoreProject.Controllers
 {
@@ -14,11 +16,11 @@ namespace CoreProject.Controllers
     [Route("[controller]")]
     public class WeatherForecastController : ControllerBase
     {
-        private CoreContext _CoreContext;
+
         private IWeatherForecastAplicationServices _IWeatherForecastAplicationServices;
         public WeatherForecastController(IWeatherForecastAplicationServices IWeatherForecastAplicationServices)
         {
-            _IWeatherForecastAplicationServices = IWeatherForecastAplicationServices;
+             _IWeatherForecastAplicationServices = IWeatherForecastAplicationServices;
         }
 
         private static readonly string[] Summaries = new[]
@@ -28,11 +30,7 @@ namespace CoreProject.Controllers
 
         private readonly ILogger<WeatherForecastController> _logger;
 
-        public WeatherForecastController(ILogger<WeatherForecastController> logger, CoreContext CoreContext)
-        {
-            _logger = logger;
-            _CoreContext = CoreContext;
-        }
+         
 
         [HttpGet]
         public IEnumerable<WeatherForecast> Get()
@@ -48,10 +46,10 @@ namespace CoreProject.Controllers
         }
 
         [HttpPost]
-        public async Task<IQueryable>  Post(int idCategory)
+        public async Task<ListadoCategoriaResponse> Post(ListadoCategoriaRequest request)
         {
 
-            IQueryable a = await  _IWeatherForecastAplicationServices.ListCategory(idCategory);
+            var a = await _IWeatherForecastAplicationServices.ListCategory(request.id);
 
             return a;
         }

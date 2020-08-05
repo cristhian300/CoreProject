@@ -1,4 +1,10 @@
+using applications.WeatherForecast.Services;
+using contracts.WeatherForecast.Services;
 using Core.Data.Context;
+using Core.Data.Contracts.WeatherForecast.Services;
+using Core.Data.Datos.Category;
+using Core.Data.Entities;
+using Core.Data.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -29,7 +35,14 @@ namespace CoreProject
                 configuration.RootPath = "ClientApp/dist";
             });
 
+            services.AddTransient<ICategory, CategoryComand>();
+            services.AddTransient<IWeatherForecastDataServices, WeatherForecastServices>();
+
+           
+            services.AddTransient<IWeatherForecastAplicationServices, WeatherForecastAplicationServices>();
             
+
+
             services.AddDbContext<CoreContext>(option => option.UseSqlServer(Configuration["ConnectionStrings:SpartacusContext"])
             );
         }

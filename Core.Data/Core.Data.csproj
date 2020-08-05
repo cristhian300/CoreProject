@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Core.Data.Contracts\Core.Data.Contracts.csproj" />
+    <ProjectReference Include="..\transport\transport.csproj" />
   </ItemGroup>
 
 </Project>

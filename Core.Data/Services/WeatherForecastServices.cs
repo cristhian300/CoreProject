@@ -2,6 +2,7 @@
 using Core.Data.Datos.Category;
 using System.Linq;
 using System.Threading.Tasks;
+using transport.WeatherForecast.Response;
 
 namespace Core.Data.Services
 {
@@ -15,7 +16,7 @@ namespace Core.Data.Services
             _ICategory = ICategory;
         }
 
-        public Task<IQueryable> ListCategory(int idCategory)
+        public Task<ListadoCategoriaResponse> ListCategory(int? idCategory)
         {
             return  Task.FromResult (_ICategory.ListCategory(idCategory));
         }

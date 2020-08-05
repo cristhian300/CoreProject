@@ -3,7 +3,8 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Linq;
-
+using transport.WeatherForecast.Response;
+using transport.WeatherForecast.QueryEntity;
 
 namespace Core.Data.Datos.Category
 {
@@ -17,14 +18,17 @@ namespace Core.Data.Datos.Category
             _CoreContext = CoreContext;
         }
 
-        public IQueryable ListCategory(int idCategory) {
+        public ListadoCategoriaResponse ListCategory(int? idCategory) {
 
             var lstCategory = (from ca in _CoreContext.Categories where ca.CategoryId == idCategory
-                                select new {
-                                        ca.CategoryId,
-                                        ca.Description
-                                       });
-            return lstCategory;
+                                select new ListCategoryQueryEntity {
+                                     CategoryId=   ca.CategoryId,
+                                    Description=  ca.Description
+                                       }).ToList();
+
+            return new ListadoCategoriaResponse  {
+                ListCategory= lstCategory
+            };
         }
 
     }

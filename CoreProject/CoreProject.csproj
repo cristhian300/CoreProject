@@ -33,8 +33,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\applications\applications.csproj" />
     <ProjectReference Include="..\contracts\contracts.csproj" />
     <ProjectReference Include="..\Core.Data\Core.Data.csproj" />
+    <ProjectReference Include="..\transport\transport.csproj" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
