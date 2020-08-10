@@ -23,6 +23,7 @@ namespace Core.Data.Datos.Category
             var lstCategory = (from ca in _CoreContext.Categories where ca.CategoryId == idCategory
                                 select new ListCategoryQueryEntity {
                                      CategoryId=   ca.CategoryId,
+                                     Name=ca.Name,
                                     Description=  ca.Description
                                        }).ToList();
 

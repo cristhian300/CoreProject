@@ -43,8 +43,27 @@ namespace CoreProject
             
 
 
-            services.AddDbContext<CoreContext>(option => option.UseSqlServer(Configuration["ConnectionStrings:SpartacusContext"])
-            );
+            services.AddDbContext<CoreContext>(option => option.UseSqlServer(Configuration["ConnectionStrings:SpartacusContext"]));
+
+            //configura cors
+            services.AddCors(options => {
+                options.AddPolicy("Todos",
+                    builder => {
+                        builder
+                        .AllowAnyHeader()
+                        .AllowAnyMethod()
+                        //.AllowAnyOrigin()
+                        .AllowCredentials();
+
+                    });
+
+            } );
+
+               
+
+
+
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -61,6 +80,7 @@ namespace CoreProject
                 app.UseHsts();
             }
 
+            app.UseCors("Todos");
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             if (!env.IsDevelopment())
