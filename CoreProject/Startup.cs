@@ -13,6 +13,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using transport.Configuration.Response;
 
 namespace CoreProject
 {
@@ -34,6 +35,8 @@ namespace CoreProject
             {
                 configuration.RootPath = "ClientApp/dist";
             });
+
+            services.Configure<JWTConfig>(Configuration.GetSection("JWTConfig"));
 
             services.AddTransient<ICategory, CategoryComand>();
             services.AddTransient<IWeatherForecastDataServices, WeatherForecastServices>();
@@ -89,7 +92,7 @@ namespace CoreProject
             }
 
             app.UseRouting();
-
+            app.UseAuthorization();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(

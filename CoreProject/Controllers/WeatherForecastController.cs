@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using contracts.WeatherForecast.Services;
 using Core.Data.Context;
 using Core.Data.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using transport.WeatherForecast.Request;
@@ -46,6 +47,7 @@ namespace CoreProject.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public async Task<ListadoCategoriaResponse> Post(ListadoCategoriaRequest request)
         {
 
